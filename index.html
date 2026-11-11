@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>독도 방어전 · 독도를 지켜라</title><link rel="stylesheet" href="style.css"></head>
+<body><main>
+<section class="sea" aria-label="독도 방어 지도">
+<div class="statusBar" aria-label="게임 상태"><div class="stats">
+<div class="energyStat"><span>독도 에너지 <b id="hp">100%</b></span><div id="energy" role="progressbar" aria-label="독도 에너지" aria-valuemin="0" aria-valuemax="6" aria-valuenow="6"><div id="energyFill"></div></div></div>
+<div class="stat"><span>등대 포인트</span><b id="coins">0 P</b></div><div class="stat" title="정답 +100점 · 오답 −50점 · 격추 +50점"><span>누적점수</span><b id="score">0점</b></div>
+<div class="stat statStage"><span>스테이지</span><b id="stageLabel">01 / 03</b></div><div class="stat statCount"><span>남은 적</span><b id="count">8척</b></div></div>
+<div class="gameActions"><button id="pause" aria-label="일시정지" title="일시정지">||</button><button id="restart" aria-label="다시하기" title="다시하기">↻</button></div></div>
+<span id="mission" class="sr-only">게임 시작을 누르면 퀴즈와 방어가 함께 시작돼요</span>
+<div id="mapArea"><div id="cannonWarning" role="alert" hidden></div><div id="board"><canvas id="map" width="1000" height="540" aria-label="바닷길을 따라 침입선이 접근하는 독도 지도"></canvas><div id="pads" aria-label="등대 설치 위치"></div></div></div>
+<div class="mapBottom"><span id="towerInfo">+ 한 번: 설치 100P · 다시 누르면: 강화 150P / 220P</span><button id="wave" hidden>1단계 게임 시작 →</button></div>
+</section>
+<section class="quiz" aria-label="독도 퀴즈"><div class="quizTitle"><span class="eyebrow">KNOWLEDGE IS POWER</span><h2>독도 지식 충전소</h2><span>정답 <b>+100P · +100점</b><br>오답 −50점 · 격추 +50점</span></div><div class="question"><h3 id="question"></h3><div id="answers"></div><div class="feedbackRow"><p id="feedback" role="status" aria-live="polite">게임을 시작해 주세요.</p></div></div></section>
+<div id="effects" aria-hidden="true"></div><div id="overlay" class="overlay" hidden><div class="welcome"></div></div><div id="toast" role="status" aria-live="polite" hidden>포인트부족! 문제를 풀어주세요</div>
+</main><script src="art.js"></script><script src="combat.js"></script><script src="content.js"></script><script src="game.js"></script></body></html>

@@ -14,6 +14,17 @@
 @keyframes floatTitle{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
 @media(max-width:720px){.titleTower{height:clamp(80px,15vh,135px)}.titleArt{height:clamp(170px,30svh,270px)}}
 @media(prefers-reduced-motion:reduce){#titleStart,.titleIsland{animation:none}}
+</style><style>
+/* Exact illustrated cover, with graceful fallback until the JPG is uploaded. */
+#titleCover.hasIllustration{background:#087cb3}
+#titleCover.hasIllustration .titleScene{width:min(1200px,100%);height:auto;aspect-ratio:1672/941;min-height:0;padding:0;border:0;border-radius:18px;background:#1d9cc9 url('assets/dokdo-title-cover.jpg') center/contain no-repeat}
+#titleCover.hasIllustration .titleHead,#titleCover.hasIllustration .titleArt,#titleCover.hasIllustration .titleFoot small{display:none}
+#titleCover.hasIllustration .titleFoot{position:absolute;inset:0;display:block;pointer-events:none}
+#titleCover.hasIllustration #titleStart{position:absolute;pointer-events:auto;left:50%;top:84%;transform:translate(-50%,-50%);width:34%;height:13%;min-height:0;min-width:0;padding:0;border:0;border-radius:999px;background:transparent;color:transparent;font-size:0;box-shadow:none;animation:illustratedButtonPulse 3s ease-in-out infinite}
+#titleCover.hasIllustration #titleStart:hover{transform:translate(-50%,-50%) scale(1.04)}
+#titleCover.hasIllustration #titleStart:focus-visible{outline:4px solid #fff}
+@keyframes illustratedButtonPulse{0%,100%{filter:brightness(1);box-shadow:0 0 0 0 #fff2a000}50%{filter:brightness(1.3);box-shadow:0 0 20px 10px #ffe890a8}}
+@media(prefers-reduced-motion:reduce){#titleCover.hasIllustration #titleStart{animation:none}}
 </style></head>
 <body><main>
 <section class="sea" aria-label="독도 방어 지도">
@@ -28,4 +39,11 @@
 </section>
 <section class="quiz" aria-label="독도 퀴즈"><div class="quizTitle"><span class="eyebrow">KNOWLEDGE IS POWER</span><h2>독도 지식 충전소</h2><span>정답 <b>+100P · +100점</b><br>오답 −50점 · 격추 +50점</span></div><div class="question"><h3 id="question"></h3><div id="answers"></div><div class="feedbackRow"><p id="feedback" role="status" aria-live="polite"></p></div></div></section>
 <div id="effects" aria-hidden="true"></div><div id="overlay" class="overlay" hidden><div class="welcome"></div></div><div id="toast" role="status" aria-live="polite" hidden>포인트부족! 문제를 풀어주세요</div>
-<div id="tour" hidden><div id="tourShade0" class="tourShade"></div><div id="tourShade1" class="tourShade"></div><div id="tourShade2" class="tourShade"></div><div id="tourShade3" class="tourShade"></div><div id="tourEnergyMessage" role="status" hidden>문제를 맞추면 에너지 회복! 틀리면 소모!</div><div id="tourFocus" aria-hidden="true"></div><section id="tourCard" aria-label="게임 따라하기"><span id="tourStep"></span><h2 id="tourTitle"></h2><p id="tourText" aria-live="polite"></p><div id="tourArt"></div><button id="tourNext" hidden></button><small>연습 중에는 적이 오지 않아요. 연습 점수는 본 게임에 포함되지 않아요.</small></section></div></main><div id="titleCover" role="dialog" aria-modal="true" aria-label="독도 방어전 대문"><section class="titleScene"><header class="titleHead"><small>DOKDO DEFENSE</small><h1>🇰🇷 독도 방어전</h1><p>퀴즈로 힘을 모아 독도를 지켜라!</p></header><div class="titleArt" aria-hidden="true"><img class="titleIsland" src="assets/island.png" alt=""><img class="titleTower one" src="assets/tower-1.png" alt=""><img class="titleTower three" src="assets/tower-3.png" alt=""></div><div class="titleFoot"><button id="titleStart" type="button">게임 시작 ▶</button><small>독도 지식 × 타워 디펜스 · 3 STAGES</small></div></section></div><script>document.getElementById('titleStart').addEventListener('click',function(){document.getElementById('titleCover').hidden=true;document.getElementById('overlay').hidden=false;});</script><script src="art.js"></script><script src="combat.js"></script><script src="content.js"></script><script src="onboarding.js"></script><script src="game.js"></script></body></html>
+<div id="tour" hidden><div id="tourShade0" class="tourShade"></div><div id="tourShade1" class="tourShade"></div><div id="tourShade2" class="tourShade"></div><div id="tourShade3" class="tourShade"></div><div id="tourEnergyMessage" role="status" hidden>문제를 맞추면 에너지 회복! 틀리면 소모!</div><div id="tourFocus" aria-hidden="true"></div><section id="tourCard" aria-label="게임 따라하기"><span id="tourStep"></span><h2 id="tourTitle"></h2><p id="tourText" aria-live="polite"></p><div id="tourArt"></div><button id="tourNext" hidden></button><small>연습 중에는 적이 오지 않아요. 연습 점수는 본 게임에 포함되지 않아요.</small></section></div></main><div id="titleCover" role="dialog" aria-modal="true" aria-label="독도 방어전 대문"><section class="titleScene"><header class="titleHead"><small>DOKDO DEFENSE</small><h1>🇰🇷 독도 방어전</h1><p>퀴즈로 힘을 모아 독도를 지켜라!</p></header><div class="titleArt" aria-hidden="true"><img class="titleIsland" src="assets/island.png" alt=""><img class="titleTower one" src="assets/tower-1.png" alt=""><img class="titleTower three" src="assets/tower-3.png" alt=""></div><div class="titleFoot"><button id="titleStart" type="button">게임 시작 ▶</button><small>독도 지식 × 타워 디펜스 · 3 STAGES</small></div></section></div><script>document.getElementById('titleStart').addEventListener('click',function(){document.getElementById('titleCover').hidden=true;document.getElementById('overlay').hidden=false;});</script><script>
+(function(){
+const cover=document.getElementById('titleCover'),start=document.getElementById('titleStart');
+const picture=new Image();picture.onload=()=>cover.classList.add('hasIllustration');
+picture.src='assets/dokdo-title-cover.jpg';
+start.setAttribute('aria-label','독도 방어전 게임 시작');
+})();
+</script><script src="art.js"></script><script src="combat.js"></script><script src="content.js"></script><script src="onboarding.js"></script><script src="game.js"></script></body></html>

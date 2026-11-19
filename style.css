@@ -24,3 +24,46 @@ main{height:100svh;max-width:1440px;margin:auto;padding:10px 14px;display:grid;g
 @media(max-height:540px){.welcome.guideScreen{padding:10px 16px;max-width:740px}.guideScreen h2{font-size:18px;margin-bottom:6px}.guideScreen p{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:14px;margin-bottom:8px}.guidePicture{min-height:140px;margin:0;padding:7px;gap:6px}.guidePicture img{height:85px}.guideCopy{font-size:11px;line-height:1.7}.guidePicture strong{font-size:11px}.guidePicture small{font-size:9px}.guideCannon img{height:95px}}
 
 #mute{font-size:20px}#mute[aria-pressed=true]{background:#ded8c5}@media(max-width:720px){.statusBar{padding-right:156px}.gameActions button{width:44px;min-width:44px}.gameActions{gap:5px}}
+
+.difficultyScreen{max-width:590px}.difficultyChoices{display:flex;gap:10px;justify-content:center;margin:16px 0}.difficultyChoices button{flex:1;min-width:80px;min-height:52px}.difficultyChoices button:first-child{background:#448963}.difficultyChoices button:nth-child(2){background:#9c7935}.difficultyChoices button:last-child{background:#a25246}.difficultyHint{font-size:12px!important;color:#665b48!important;line-height:1.9!important}
+#tour{position:fixed;inset:0;z-index:8;pointer-events:none}.tourShade{position:fixed;background:#082c3cce;pointer-events:auto}#tourFocus{position:fixed;border:3px solid #ffe47d;border-radius:14px;box-shadow:0 0 18px #ffe47d99;pointer-events:none}#tourCard{position:fixed;left:50%;transform:translateX(-50%);width:min(560px,calc(100vw - 24px));background:#fff8e2;border:3px solid #b89c58;border-radius:18px;padding:16px 20px;color:#463e2d;text-align:center;pointer-events:auto;box-shadow:0 6px 25px #001d3444}#tourCard[data-place=top]{top:12px}#tourCard[data-place=bottom]{bottom:12px}#tourStep{color:#8a6e3a;font-size:12px;font-weight:800}#tourTitle{font-size:20px;line-height:1.45;margin:6px 0}#tourText{font-size:14px;line-height:1.7;margin:6px 0 10px}#tourCard>small{display:block;font-size:11px;line-height:1.5;margin-top:8px;color:#7e7055}#tourNext{min-height:44px}#tourArt .guidePicture{min-height:115px;padding:8px;margin:6px 0}#tourArt img{height:80px}#tourArt .guideCannon img{height:85px}
+@media(max-width:720px){#tourCard{padding:12px;width:calc(100vw - 20px)}#tourTitle{font-size:17px}#tourText{font-size:12px;line-height:1.7}#tourArt .guidePicture{min-height:110px}#tourArt img{height:70px}.difficultyScreen{padding:20px 12px}.difficultyScreen h2{font-size:28px}.difficultyChoices{gap:6px}.difficultyChoices button{padding:8px}.difficultyHint{font-size:11px!important}}
+@media(max-height:540px){#tourCard{left:auto;right:12px;transform:none;width:45vw;padding:9px 12px}#tourCard[data-place=top]{top:8px}#tourCard[data-place=bottom]{bottom:8px}#tourTitle{font-size:15px}#tourText{font-size:11px;margin:4px 0}#tourArt .guidePicture{min-height:85px}#tourArt img,#tourArt .guideCannon img{height:50px}#tourCard>small{font-size:9px;margin-top:3px}}
+
+/* Pulse the tutorial's current click target without moving its hit area. */
+#tourFocus{animation:tourTargetPulse 1.35s ease-in-out infinite}
+#tourFocus:after{content:'✦';position:absolute;right:-12px;top:-16px;color:#fff8c0;font-size:27px;line-height:1;text-shadow:0 0 8px #ffc83d;animation:tourSparkle 1.35s ease-in-out infinite;pointer-events:none}
+@keyframes tourTargetPulse{0%,100%{border-color:#ffe47d;box-shadow:0 0 8px #ffe47d77}50%{border-color:#fffef0;box-shadow:0 0 0 5px #ffd75e55,0 0 26px #ffe47ddd}}
+@keyframes tourSparkle{0%,100%{opacity:.35;transform:scale(.8) rotate(-12deg)}50%{opacity:1;transform:scale(1.15) rotate(12deg)}}
+#tourNext:not([hidden]){animation:tourNextPulse 1.35s ease-in-out infinite}
+@keyframes tourNextPulse{0%,100%{box-shadow:0 0 0 0 #ffcc5544}50%{box-shadow:0 0 0 5px #ffcc5577}}
+@media(prefers-reduced-motion:reduce){#tourFocus,#tourFocus:after,#tourNext:not([hidden]){animation:none}#tourFocus{border-color:#fff7b0;box-shadow:0 0 0 4px #ffd75e66,0 0 18px #ffe47d99}#tourFocus:after{opacity:1}}
+
+/* Readable answers and a bright tutorial healing flight. */
+.feedbackRow:has(#feedback:empty){display:none}
+.quiz{grid-template-columns:165px minmax(0,1fr);gap:16px;padding:14px 18px}h3{font-size:19px;line-height:1.5;margin-bottom:10px}#answers{gap:10px}#answers button{min-height:68px;font-size:18px;line-height:1.5;padding:10px 12px;color:#39372b}#answers[data-type=ox] button{font-size:28px;min-height:68px}#feedback{font-size:13px;line-height:1.6}.feedbackRow{min-height:0;margin-top:8px}
+#effects{z-index:10;pointer-events:none}#tourEnergyMessage{position:fixed;z-index:11;transform:translateX(-50%);width:max-content;max-width:calc(100vw - 24px);text-align:center;padding:12px 18px;border:2px solid #ffed95;border-radius:15px;background:#fff6c9;color:#36513b;font-size:19px;font-weight:900;box-shadow:0 0 24px #ffdf72a0;animation:energyMessageRise .65s ease-out both;pointer-events:none}@keyframes energyMessageRise{from{opacity:0;translate:0 18px}to{opacity:1;translate:0 0}}
+@media(max-width:1050px) and (min-width:721px){.quiz{grid-template-columns:145px minmax(0,1fr);padding:10px 12px;gap:12px}#answers button{font-size:16px;min-height:64px}h3{font-size:17px}}
+@media(max-width:720px){.quiz{display:block;padding:10px 12px}h3{font-size:16px;line-height:1.5}#answers{gap:8px}#answers button{min-height:58px;font-size:15px;line-height:1.5;padding:9px 8px}#answers[data-type=ox] button{font-size:28px;min-height:62px}#feedback{font-size:12px}#tourEnergyMessage{font-size:14px;padding:10px 12px;width:calc(100vw - 28px)}}
+@media(prefers-reduced-motion:reduce){#tourEnergyMessage{animation:none}}
+
+/* Stable scene/quiz split: feedback floats above the question, outside layout. */
+main{grid-template-rows:minmax(0,1fr) 216px}
+.quiz{position:relative;height:216px;min-height:0;align-items:stretch}
+.question{display:grid;grid-template-rows:72px minmax(0,1fr);gap:8px;min-height:0}
+.question h3{margin:0;align-self:center;overflow-wrap:anywhere}
+#answers{min-height:0;align-items:stretch}
+#answers button,#answers[data-type=ox] button{min-height:0;height:100%}
+.quiz .feedbackRow{position:absolute;z-index:4;left:50%;bottom:calc(100% + 14px);transform:translateX(-50%);width:max-content;max-width:calc(100% - 24px);min-height:0;margin:0;padding:12px 18px;display:flex;background:#fff9df;border:2px solid #ba9853;border-radius:16px;box-shadow:0 5px 18px #143d4840;pointer-events:none}
+.quiz .feedbackRow:after{content:'';position:absolute;left:50%;bottom:-9px;width:14px;height:14px;background:#fff9df;border-right:2px solid #ba9853;border-bottom:2px solid #ba9853;transform:translateX(-50%) rotate(45deg)}
+.quiz .feedbackRow:has(#feedback:empty){display:none}
+.quiz #feedback{font-size:15px;line-height:1.65;color:#43553c;max-width:850px;text-align:center;font-weight:600}
+@media(max-width:1050px) and (min-width:721px){.quiz #feedback{font-size:14px}}
+@media(max-width:720px){main{grid-template-rows:minmax(0,1fr) 320px}.quiz{height:320px;display:grid;grid-template-rows:24px minmax(0,1fr);gap:8px}.quizTitle{margin:0}.question{grid-template-rows:72px minmax(0,1fr);gap:8px}#answers{grid-auto-rows:minmax(0,1fr)}.quiz #feedback{font-size:13px}.quiz .feedbackRow{padding:10px 12px;width:calc(100% - 16px);max-width:none}}
+@media(max-height:540px) and (min-width:721px){main{grid-template-rows:minmax(0,1fr) 190px}.quiz{height:190px}.question{grid-template-rows:60px minmax(0,1fr)}}
+
+@media(max-width:720px){.quiz{grid-template-columns:minmax(0,1fr)}}
+
+.difficultyBadge{align-self:center;white-space:nowrap;font-size:14px;font-weight:800;color:#695237;background:#fff8df;border:1px solid #c6b17b;border-radius:10px;padding:8px 10px;margin-right:3px}.difficultyBadge[data-level=easy]{color:#397347}.difficultyBadge[data-level=medium]{color:#916d2f}.difficultyBadge[data-level=hard]{color:#a24c3e}.resultDifficulty{font-size:17px;font-weight:800;color:#71552b;margin:0 0 12px;padding:8px 12px;border-radius:12px;background:#f0e6c3}
+@media(max-width:1050px) and (min-width:721px){.statusBar{gap:12px}.stats{gap:12px}.difficultyBadge{font-size:12px;padding:7px}}
+@media(max-width:720px){.sea{grid-template-rows:150px minmax(0,1fr) 30px}.statusBar{padding:58px 10px 8px}.stats{height:100%;column-gap:12px}.gameActions{top:8px;right:8px}.difficultyBadge{font-size:12px;padding:8px 10px}.resultDifficulty{font-size:15px}}

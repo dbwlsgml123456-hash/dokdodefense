@@ -47,7 +47,7 @@ function beginEnergyTour(healed){
  $('tourNext').hidden=true;positionTour();
 }
 function arriveEnergyTour(healed){
- if(tourStep!==0||tourEnergyPhase!=='flight')return;tourEnergyPhase='arrived';s.energy=Math.min(MAX_ENERGY,s.energy+healed);
+ if(tourStep!==0||tourEnergyPhase!=='flight')return;tourEnergyPhase='arrived';s.energy=Math.min(maxEnergy(),s.energy+healed);
  $('tourTitle').textContent='문제를 맞추면 에너지 회복! 틀리면 소모!';$('tourText').textContent='정답은 독도 에너지를 채워 주고, 오답은 에너지를 줄여요. 이제 모은 포인트로 등대를 만들어 볼까요?';
  $('tourEnergyMessage').hidden=false;$('tourNext').hidden=false;$('tourNext').textContent='다음: 등대 만들기 →';$('tourNext').onclick=()=>showTourStep(1);ui();positionTour();
 }

@@ -1,8 +1,8 @@
 'use strict';
 let selectedDifficulty='hard',tourStep=-1,tourEnergyPhase='';
 const difficulties={
- easy:{label:'쉬움',heal:1,wrong:.5,cannonDamage:6,spawnAt:[2,8,14],routes:[0,3,5]},
- medium:{label:'중간',heal:1,wrong:1,cannonDamage:6,spawnAt:[0,3,6,9,12,16],routes:[0,1,2,3,4,5]},
+ easy:{label:'쉬움',heal:1,wrong:.5,cannonDamage:3,spawnAt:[2,8,14],routes:[0,3,5]},
+ medium:{label:'중간',heal:1,wrong:1,cannonDamage:4.5,spawnAt:[0,3,6,9,12,16],routes:[0,1,2,3,4,5]},
  hard:{label:'어려움',heal:.5,wrong:.5,cannonDamage:12,spawnAt:[0,2,3,5,7,8,10,12,14,16],routes:[0,1,2,3,4,5,0,2,3,5]}
 };
 function difficultyRules(){return difficulties[selectedDifficulty]}
@@ -12,7 +12,7 @@ function showDifficulty(){
  const buttons=document.createElement('div');buttons.className='difficultyChoices';
  for(const key of ['easy','medium']){const b=document.createElement('button');b.textContent=difficulties[key].label;b.onclick=()=>chooseDifficulty(key);buttons.append(b)}
  const hard=panel.children[2];buttons.append(hard);panel.append(buttons);
- const hint=document.createElement('p');hint.className='difficultyHint';hint.innerHTML='쉬움 · 회복 +1 / 오답 −0.5 / 대포 피해 6 / 3척<br>중간 · 회복 +1 / 오답 −1 / 대포 피해 6 / 6척<br>어려움 · 회복 +0.5 / 오답 −0.5 / 대포 피해 12 / 10척';panel.append(hint);
+ const hint=document.createElement('p');hint.className='difficultyHint';hint.innerHTML='쉬움 · 회복 +1 / 오답 −0.5 / 대포 피해 3 / 3척<br>중간 · 회복 +1 / 오답 −1 / 대포 피해 4.5 / 6척<br>어려움 · 회복 +0.5 / 오답 −0.5 / 대포 피해 12 / 10척';panel.append(hint);
 }
 function chooseDifficulty(key){if(!difficulties[key]||s.mode!=='waiting')return;selectedDifficulty=key;beginTour()}
 function hideTour(){tourStep=-1;tourEnergyPhase='';$('tourEnergyMessage').hidden=true;$('tour').hidden=true}
